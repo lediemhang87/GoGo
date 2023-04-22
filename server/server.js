@@ -1,13 +1,15 @@
 const express = require('express')
+const fs = require('fs');
 
 const app = express();
 
 app.use(express.json());
 
 const { Configuration, OpenAIApi } = require('openai');
+let configs = JSON.parse(fs.readFileSync('config.json'))
 
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: configs.api_key,
 });
 
 const openai = new OpenAIApi(configuration);
