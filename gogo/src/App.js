@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 import Planner from './Components/Planner';
 import Introduction from './Components/Introduction'
 
