@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import axios from 'axios'
 import parse from 'html-react-parser';
 import Navbar from './Navbar';
 import Prompt from './PlanPageComps/Prompt';
 import '../Styles/Styles.Planner.scss'
+import { useReactToPrint } from 'react-to-print';
+import ReactToPrint from 'react-to-print';
 
-const Introduction = () => {
+const ComponentToPrint = React.forwardRef((props, ref) => {
     const [chatAnswer, setChatAnswer] = useState()
     const [loading, setLoading] = useState(false)
 
@@ -43,7 +45,7 @@ const Introduction = () => {
                                                         : 
                                                         (<div className='definedDiv'> 
                                                         
-                                                                <p> {parse(`${chatAnswer}`)} </p> 
+                                                                <p ref={ref}> {parse(`${chatAnswer}`)} </p> 
                                                         
                                                         </div>)
                                                 }
@@ -61,6 +63,23 @@ const Introduction = () => {
         </div>
     )
         
-}
+});
+
+const Introduction = () => {
+        const componentRef = useRef();
+        const handlePrint = useReactToPrint({
+            content: () => componentRef.current,
+        });
+      
+        return (
+            <div>
+              <ComponentToPrint ref={componentRef} />
+              <ReactToPrint
+                trigger={() => <button>Print this out!</button>}
+                content={() => componentRef.current}
+              />
+            </div>
+          );
+};
 
 export default Introduction
