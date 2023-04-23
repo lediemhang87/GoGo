@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+.prompt{
+    
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-family: 'Poppins', sans-serif;
+
+    .overlay{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .headerImg{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0%;
+        bottom: 0%;
+        object-fit: cover;
+    }
+
+    .homeContent{
+        width: 100%;
+        height: max-content;
+        padding: 8 rem 4 rem 4 rem;
+        display: flex;
+        row-gap: 3 rem;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        z-index: 100;
+        
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        width: 70%;
+        
+        
+        .questionHeader{
+            margin-top: 50px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 30px 30px 30px rgba(0, 0, 0);
+        }
+        
+    }
+    .textDiv{
+        background-color:rgba(255, 255, 255, 0.7);
+        border-radius: 30px;
+
+        margin-top: 50px;
+        margin-bottom: 50px;
+        text-align: center;
+        color: #2e1f10;
+        
+        p{
+            font-weight: bold;
+            font-size: large;
+            margin-left: 5%;
+            margin-top: 30px;
+            text-align: left;
+        }
+        input{
+            background-color: rgba(255, 255, 255, 0.5) ;
+            border-radius: 10px;
+            border: none;
+            width: 90%;
+            height: 50px;
+            padding: 10px;
+        }
+
+        button{
+            background-color: #124449;
+            color: whitesmoke;
+            padding: 10px;
+            border-radius: 20px;
+            width: 250px;
+            border: 0;
+            margin: 30px auto 30px auto;
+                
+        }
+        button:hover{
+            background-color: #589499;
+            color: white
+        }
+    }
+
+}

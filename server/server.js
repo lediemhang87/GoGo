@@ -1,13 +1,15 @@
 const express = require('express')
+const fs = require('fs');
 
 const app = express();
 
 app.use(express.json());
 
 const { Configuration, OpenAIApi } = require('openai');
+let configs = JSON.parse(fs.readFileSync('config.json'))
 
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: configs.api_key,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -16,7 +18,7 @@ app.post(`/api`, async (req, res) => {
     try {
         const response = await openai.createChatCompletion({
           model: 'gpt-3.5-turbo',
-          messages: [{ role: 'user', content: req.body.Content}],
+          messages: [{ role: 'user', content: req.body.content}],
           max_tokens: 2408
         });
     
@@ -29,7 +31,6 @@ app.post(`/api`, async (req, res) => {
         return err;
       }
 
-    res.send("hello")
 })
 
 app.listen(5000, ()=> {console.log("server started on port 5000")})

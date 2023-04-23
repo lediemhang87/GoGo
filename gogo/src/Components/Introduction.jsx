@@ -3,17 +3,14 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css';
 import '../Styles/Styles.Introduction.scss'
 import Navbar from './Navbar';
+import Header from './IntroPageComps/Header';
 
 
 const Introduction= () => {
     return (
     <div>
         <Navbar/>
-        <div className='container'> 
-            <div className='Introduction'>
-                <h1> Hello </h1>
-            </div>
-        </div>
+        <Header/>
     </div>)
 }
 
