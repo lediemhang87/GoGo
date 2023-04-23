@@ -16,7 +16,6 @@ const Header = () => {
                     <p> Plan your next adventure with ease using our intuitive travel app. From booking flights and accommodations to creating custom itineraries, we make travel planning a breeze. </p>
                     <div> 
                         <a href={'/planner'}><button> Plan your trip </button> </a>
-                        <button> Plan your flights </button>
                     </div>
                 </div>
 

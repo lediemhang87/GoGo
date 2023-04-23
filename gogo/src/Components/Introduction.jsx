@@ -11,6 +11,10 @@ const Introduction= () => {
     <div>
         <Navbar/>
         <Header/>
+        <div className='footer'>
+                <p> Hope you enjoy the experience ^^ </p>
+                <p> From Charlie and Ashley - 2023</p>
+              </div>
     </div>)
 }
 

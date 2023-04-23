@@ -54,18 +54,12 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
                                 
                         </div>
                 </div>
-                <div className='container'>
-                        Footer
-                </div>
-                
-                
-                
         </div>
     )
         
 });
 
-const Introduction = () => {
+const Planner = () => {
         const componentRef = useRef();
         const handlePrint = useReactToPrint({
             content: () => componentRef.current,
@@ -74,12 +68,17 @@ const Introduction = () => {
         return (
             <div>
               <ComponentToPrint ref={componentRef} />
-              <ReactToPrint
-                trigger={() => <button>Print this out!</button>}
+              <ReactToPrint className='printClass'
+                trigger={() => <div className='printClass'><button className='printButton'> Print this plan </button></div>}
                 content={() => componentRef.current}
               />
+              <div className='footer'>
+                <p> Hope you enjoy the experience ^^ </p>
+                <p> From Charlie and Ashley - 2023</p>
+              </div>
             </div>
+            
           );
 };
 
-export default Introduction
+export default Planner

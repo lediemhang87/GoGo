@@ -9,7 +9,7 @@ function App() {
 
         <Route path='/planner' element={<Planner/>}/>
         <Route path='/' element={<Introduction/>}/>
-
+        
       </Routes>
     </Router>
   );

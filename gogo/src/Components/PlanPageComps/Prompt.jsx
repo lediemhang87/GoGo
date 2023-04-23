@@ -11,9 +11,12 @@ const Prompt = ({ parentCallback }) => {
     async function handleSubmit(e) {
         e.preventDefault() 
         const newPrompt = `Please give me a ` + interval + ` plan for traveling from `+ origin + ` to ` + location + ` with budget ` + budget + `each person, for `+ noPpl + `people . Please make sure provide the answer in HTML div and in table format. The table should have day number, activity and location and budget.
-        Give the same output as this structure
+        Dont include the plan for the origin point, start with the flight from origin point to destination. Give the same output as this structure
         <head>
             <style>
+                body{
+                    background: rgb(244, 244, 244);
+                }
                 table {
                         border-collapse: collapse;
                         width: 100%;
@@ -49,14 +52,14 @@ const Prompt = ({ parentCallback }) => {
                 </tr>
                 <tr>
                         <td contentEditable="true">1</td>
-                        <td contentEditable="true">Visit location A</td>
-                        <td contentEditable="true">Location A</td>
+                        <td contentEditable="true">Visit location </td>
+                        <td contentEditable="true">Location </td>
                         <td contentEditable="true">€ per person</td>
                 </tr>
                 <tr>
                         <td contentEditable="true"></td>
-                        <td contentEditable="true" >Have lunch at location B</td>
-                        <td contentEditable="true" >location B</td>
+                        <td contentEditable="true" >Have lunch at location </td>
+                        <td contentEditable="true" >location </td>
                         <td contentEditable="true" >$ per person</td>
                 </tr>
                 <tr>
@@ -74,8 +77,8 @@ const Prompt = ({ parentCallback }) => {
                 </tr>
                 <tr>
                         <td contentEditable="true"></td>
-                        <td contentEditable="true">Have dinner at location C</td>
-                        <td contentEditable="true">location C</td>
+                        <td contentEditable="true">Have dinner at location </td>
+                        <td contentEditable="true">location </td>
                         <td contentEditable="true">$ per person</td>
                 </tr>
                 <tr>
@@ -116,7 +119,6 @@ const Prompt = ({ parentCallback }) => {
         </body>
 
         `
-        // setPrompt (newPrompt)
         parentCallback(newPrompt)
     }
     const handleChangeOrigin = (e) => {
@@ -141,7 +143,7 @@ const Prompt = ({ parentCallback }) => {
 
     const handleChangeNoPpl = (e) => {
         // e.preventDefault();
-        setBudget(e.target.value)
+        setNoPpl(e.target.value)
     }
 
     return(
