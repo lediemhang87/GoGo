@@ -2,14 +2,15 @@ import React, {useEffect, useState} from 'react'
 import '../../Styles/Styles.Prompt.scss'
 
 const Prompt = ({ parentCallback }) => {
-    const [prompt , setPrompt] = useState('');
+    const [origin, setOrigin] = useState('')
     const [location, setLocation] = useState('');
     const [interval, setInterval] = useState('');
     const [budget, setBudget] = useState('');
+    const [noPpl, setNoPpl] = useState('');
 
     async function handleSubmit(e) {
-
-        const newPrompt = `Please give me a ` + interval + ` plan for traveling to ` + location + ` with budget ` + budget + `. Please make sure provide the answer in HTML div and in table format. The table should have day number, activity and location and budget.
+        e.preventDefault() 
+        const newPrompt = `Please give me a ` + interval + ` plan for traveling from `+ origin + ` to ` + location + ` with budget ` + budget + `each person, for `+ noPpl + `people . Please make sure provide the answer in HTML div and in table format. The table should have day number, activity and location and budget.
         Give the same output as this structure
         <head>
             <style>
@@ -39,6 +40,7 @@ const Prompt = ({ parentCallback }) => {
         </head>
     <body>
         <table>
+                
                 <tr>
                         <th>Day</th>
                         <th>Activity</th>
@@ -46,66 +48,82 @@ const Prompt = ({ parentCallback }) => {
                         <th>Budget</th>
                 </tr>
                 <tr>
-                        <td>1</td>
-                        <td>Visit the Eiffel Tower</td>
-                        <td>Eiffel Tower</td>
-                        <td>€25 per person (to the top)</td>
+                        <td contentEditable="true">1</td>
+                        <td contentEditable="true">Visit location A</td>
+                        <td contentEditable="true">Location A</td>
+                        <td contentEditable="true">€ per person</td>
                 </tr>
                 <tr>
-                        <td></td>
-                        <td>Explore the Louvre Museum</td>
-                        <td>Louvre Museum</td>
-                        <td>€15 per person</td>
+                        <td contentEditable="true"></td>
+                        <td contentEditable="true" >Have lunch at location B</td>
+                        <td contentEditable="true" >location B</td>
+                        <td contentEditable="true" >$ per person</td>
                 </tr>
                 <tr>
-                        <td></td>
-                        <td>Stroll along the Champs-Élysées</td>
-                        <td>Champs-Élysées</td>
-                        <td>Free</td>
+                        <td contentEditable="true" ></td>
+                        <td contentEditable="true" >Explore the Louvre Museum</td>
+                        <td contentEditable="true">Louvre Museum</td>
+                        <td contentEditable="true">€15 per person</td>
+                </tr>
+                
+                <tr>
+                        <td contentEditable="true"></td>
+                        <td contentEditable="true" >Stroll along the Champs-Élysées</td>
+                        <td contentEditable="true" >Champs-Élysées</td>
+                        <td contentEditable="true" >Free</td>
                 </tr>
                 <tr>
-                        <td>2</td>
-                        <td>Explore Montmartre</td>
-                        <td>Montmartre</td>
-                        <td>Free</td>
+                        <td contentEditable="true"></td>
+                        <td contentEditable="true">Have dinner at location C</td>
+                        <td contentEditable="true">location C</td>
+                        <td contentEditable="true">$ per person</td>
                 </tr>
                 <tr>
-                        <td></td>
-                        <td>Visit the Sacré-Cœur Basilica</td>
-                        <td>Sacré-Cœur Basilica</td>
-                        <td>Free</td>
+                        <td contentEditable="true">1</td>
+                        <td contentEditable="true">Visit location A</td>
+                        <td contentEditable="true">Location A</td>
+                        <td contentEditable="true">€ per person</td>
                 </tr>
                 <tr>
-                        <td></td>
-                        <td>Explore the Notre-Dame Cathedral</td>
-                        <td>Notre-Dame Cathedral</td>
-                        <td>Free</td>
+                        <td contentEditable="true"></td>
+                        <td contentEditable="true">Have lunch at location B</td>
+                        <td contentEditable="true">location B</td>
+                        <td contentEditable="true">$ per person</td>
                 </tr>
                 <tr>
-                        <td>3</td>
-                        <td>Visit the Palace of Versailles</td>
-                        <td>Palace of Versailles</td>
-                        <td>€20 per person</td>
+                        <td contentEditable="true"></td>
+                        <td contentEditable="true">Explore the Louvre Museum</td>
+                        <td contentEditable="true">Louvre Museum</td>
+                        <td contentEditable="true">€15 per person</td>
+                </tr>
+                
+                <tr>
+                        <td contentEditable="true"></td>
+                        <td contentEditable="true">Stroll along the Champs-Élysées</td>
+                        <td contentEditable="true">Champs-Élysées</td>
+                        <td contentEditable="true">Free</td>
                 </tr>
                 <tr>
-                        <td></td>
-                        <td>Explore the Sainte-Chapelle</td>
-                        <td>Sainte-Chapelle</td>
-                        <td>€10 per person</td>
-                </tr>
-                <tr>
-                        <td></td>
-                        <td>Explore the Musée d'Orsay</td>
-                        <td>Musée d'Orsay</td>
-                        <td>€14 per person</td>
+                        <td contentEditable="true"></td>
+                        <td contentEditable="true">Have dinner at location C</td>
+                        <td contentEditable="true">location C</td>
+                        <td contentEditable="true">$ per person</td>
                 </tr>
             </table>
+            <p> Flight/ transportation cost from origin to destination </p>
+            <p> Hotel cost for all the nights per 1 person: </p>
+            <p> Total cost for 1 person: </>
         </body>
 
         `
         // setPrompt (newPrompt)
         parentCallback(newPrompt)
     }
+    const handleChangeOrigin = (e) => {
+        // e.preventDefault();
+        setOrigin(e.target.value)
+    }
+
     const handleChangeLocation = (e) => {
         // e.preventDefault();
         setLocation(e.target.value)
@@ -121,6 +139,11 @@ const Prompt = ({ parentCallback }) => {
         setBudget(e.target.value)
     }
 
+    const handleChangeNoPpl = (e) => {
+        // e.preventDefault();
+        setBudget(e.target.value)
+    }
+
     return(
         <div>
             <div className='prompt'>
@@ -129,30 +152,35 @@ const Prompt = ({ parentCallback }) => {
          
                 <div className='homeContent container'>
                     <h1 className='questionHeader'> Where are you going? </h1>
-                    <div className='textDiv container'>
-                        <div className='row'> 
-                            <div className='col-lg-4'>
-                                <p> Traveling to: </p>
-                                <input onChange={handleChangeLocation} placeholder='San Francisco, Paris, Singapore, e.g'/>
+                    <form onSubmit={handleSubmit}>
+                        <div className='textDiv container'>
+                            <div className='row'> 
+                                <div className='col-lg-6'>
+                                    <p> Traveling from </p>
+                                    <input onChange={handleChangeOrigin} placeholder='San Francisco, Paris, Singapore, e.g' required/>
+                                </div>
+                                <div className='col-lg-6'>
+                                    <p> Traveling to </p>
+                                    <input onChange={handleChangeLocation} placeholder='San Francisco, Paris, Singapore, e.g' required/>
+                                </div>
                             </div>
-                            <div className='col-lg-4'>
-                                <p> Time interval: </p>
-                                <input onChange={handleChangeInterval} placeholder='3 days, 10 days, 2 weeks, 1 month, e.g '/>
+                            <div className='row'>
+                                <div className='col-lg-4'>
+                                    <p> Time interval </p>
+                                    <input onChange={handleChangeInterval} placeholder='3 days, 10 days, 2 weeks, 1 month, e.g ' required/>
+                                </div>
+                                <div className='col-lg-4'>
+                                    <p> Budget per person </p>
+                                    <input onChange={handleChangeBudget} placeholder='$300, $1000, $5000, e.g' required/>
+                                </div>
+                                <div className='col-lg-4'>
+                                    <p> Number of people </p>
+                                    <input onChange={handleChangeNoPpl} placeholder='1, 2, 3, 4, e.g' required/>
+                                </div>
                             </div>
-                            <div className='col-lg-4'>
-                                <p> Budget </p>
-                                <input onChange={handleChangeBudget} placeholder='$300, $1000, $5000, e.g'/>
+                            <button type="submit" value="Submit" > Plan your trip </button>
                         </div>
-                    </div>
-                        
-                        
-                        
-                        <div> 
-                            <a><button onClick={handleSubmit}> Plan your trip </button> </a>
-                        </div>
-                        
-                        
-                    </div>
+                    </form>
                 </div>
 
             </div>

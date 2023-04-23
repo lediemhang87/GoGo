@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+.OuterPlanner{
+    background: rgb(244, 244, 244);
+}
+.planner{
+
+    .loading{
+        padding: 200px;
+        height: 100%;
+        .loadingIcon{
+            background-color: white;
+            border-radius: 50%;
+        }
+        .loadingText{
+            margin-top: 30px;
+        }
+    }
+    text-align: center;
+    
+    .undefinedDiv{
+        padding: 200px;
+        height: 100%;
+       
+        .undefinedDivContent{
+            margin: 0px auto; /* horizontally centers the element */
+            text-align: center; /* centers any inline content inside the element */
+            padding: 30px;
+            border-radius: 20px;
+            width: 50%;
+            background-color: white;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            .plannerIcon{
+                width: 80px;
+            }
+        }
+        
+    }
+
+    .definedDiv{
+        margin: 30px auto;
+    }
+    
+    
+}
